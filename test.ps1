@@ -16,12 +16,12 @@ elseif (($image -eq "vs2022-master") -or ($image -eq "vs2022-master-gce-us-centr
     $Binary64 = "lib64-msvc-14.3"
 }
 else {
-    $BoostVersions += @("boost_1_77_0","boost_1_83_0")
+    $BoostVersions += @("boost_1_83_0")
 }
 
 foreach ($ver in $BoostVersions) {
     Write-host "C:\Libraries\$ver\$Binary32"
-    Write-host "C:\Libraries\$ver\$Binary34"
+    Write-host "C:\Libraries\$ver\$Binary32"
     if ((Test-Path -Path "C:\Libraries\$ver\$Binary32") -and (Test-Path -Path "C:\Libraries\$ver\$Binary64")) {
         Write-Host "Boost version installed"  -ForegroundColor Green
     } else {
