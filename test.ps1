@@ -20,7 +20,7 @@ else {
 }
 
 foreach ($ver in $BoostVersions) {
-    if ((Test-Path -Path "C:\Libraries\$BoostFolder\$Binary32") -and (Test-Path -Path "C:\Libraries\$BoostFolder\$Binary64")) {
+    if ((Test-Path -Path "C:\Libraries\$ver\$Binary32") -and (Test-Path -Path "C:\Libraries\$ver\$Binary64")) {
         Write-Host "Boost version installed"  -ForegroundColor Green
     } else {
         throw "Boost version missing"
