@@ -1,18 +1,26 @@
+param (
+    [string]$image
+)
+$BoostVersions = @()
+$Binary32 = "lib32-msvc-14.2"
+$Binary64 = "lib64-msvc-14.2"
 
+if (($image -eq "vs2019-master") -or ($image -eq "vs2019-master-gce-us-central1")) {
+    $BoostVersions += @("boost_1_77_0","boost_1_83_0")
 
-$BoostFolder = 'C:\Libraries\boost_1_82_0'
-$BinaryFolder32 = 'C:\Libraries\boost_1_82_0\lib32-msvc-14.3'
-$BinaryFolder64 = 'C:\Libraries\boost_1_82_0\lib64-msvc-14.3'
-
-if (Test-Path -Path $BoostFolder) {
-    "Boost version installed"
-} else {
-    "Boost version missing"
 }
-
-if ((Test-Path -Path $BinaryFolder32) -and (Test-Path -Path $BinaryFolder64)) {
-    "Correct Boost binaries present"
+elseif (($image -eq "vs2022-master") -or ($image -eq "vs2022-master-gce-us-central1")){
+    $BoostVersions += @("boost_1_78_0","boost_1_83_0")
+    $Binary32 = "lib32-msvc-14.3"
+    $Binary64 = "lib64-msvc-14.3"
 }
 else {
-    "Correct Boost binaries missing"
+    $BoostVersions += @("boost_1_77_0","boost_1_83_0")
+}
+
+foreach ($ver in $BoostVersions)
+if ((Test-Path -Path "C:\Libraries\$BoostFolder\$Binary32") -and (Test-Path -Path "C:\Libraries\$BoostFolder\$Binary64")) {
+    Write-Host "Boost version installed"  -ForegroundColor Green
+} else {
+    throw "Boost version missing"
 }
