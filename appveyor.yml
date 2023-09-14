@@ -6,7 +6,7 @@ init:
 
 test_script:
   - ps: Write-host $env:APPVEYOR_BUILD_WORKER_IMAGE
-  - ps: .\test.ps1 -image ${APPVEYOR_BUILD_WORKER_IMAGE}
+  - ps: .\test.ps1 -image $env:APPVEYOR_BUILD_WORKER_IMAGE
 
 build: off
 on_finish:
