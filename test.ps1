@@ -18,9 +18,11 @@ else {
     $BoostVersions += @("boost_1_77_0","boost_1_83_0")
 }
 
-foreach ($ver in $BoostVersions)
-if ((Test-Path -Path "C:\Libraries\$BoostFolder\$Binary32") -and (Test-Path -Path "C:\Libraries\$BoostFolder\$Binary64")) {
-    Write-Host "Boost version installed"  -ForegroundColor Green
-} else {
-    throw "Boost version missing"
+foreach ($ver in $BoostVersions) {
+    if ((Test-Path -Path "C:\Libraries\$BoostFolder\$Binary32") -and (Test-Path -Path "C:\Libraries\$BoostFolder\$Binary64")) {
+        Write-Host "Boost version installed"  -ForegroundColor Green
+    } else {
+        throw "Boost version missing"
+    }
+
 }
