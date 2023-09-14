@@ -20,6 +20,8 @@ else {
 }
 
 foreach ($ver in $BoostVersions) {
+    Write-host "C:\Libraries\$ver\$Binary32"
+    Write-host "C:\Libraries\$ver\$Binary34"
     if ((Test-Path -Path "C:\Libraries\$ver\$Binary32") -and (Test-Path -Path "C:\Libraries\$ver\$Binary64")) {
         Write-Host "Boost version installed"  -ForegroundColor Green
     } else {
