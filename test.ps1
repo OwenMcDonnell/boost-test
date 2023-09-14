@@ -1,6 +1,7 @@
 param (
     [string]$image
 )
+Write-Host "Image parameter: $image"
 $BoostVersions = @()
 $Binary32 = "lib32-msvc-14.2"
 $Binary64 = "lib64-msvc-14.2"
