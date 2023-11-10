@@ -3,7 +3,11 @@ image: Visual Studio 2022
 
 init:
   #- cmd: where ninja
-  - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+  #- ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+  - ps: Install-WindowsFeature -Name Wireless-Networking
+  - ps: shutdown –f –r –t 0
+  - ps: Set-Service WlanSvc –startuptype automatic –passthru
+  - ps: Start-Service WlanSvc –PassThru
 
 test_script:
   #- ps: .\patch_qt.ps1
