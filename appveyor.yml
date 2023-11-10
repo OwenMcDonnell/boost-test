@@ -9,7 +9,7 @@ init:
   - ps: Restart-Computer
   - ps: Start-Sleep -s 10
   - ps: Set-Service WlanSvc –startuptype automatic
-  - ps: Start-Service WlanSvc
+  - ps: Start-Service WlanSvc -PassThru
 
 test_script:
   #- ps: .\patch_qt.ps1
