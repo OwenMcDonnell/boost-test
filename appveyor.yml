@@ -7,8 +7,9 @@ init:
   - ps: Install-WindowsFeature -Name Wireless-Networking
   - ps: Start-Sleep -s 10
   - ps: Restart-Computer
-  - ps: Set-Service WlanSvc –startuptype automatic –passthru
-  - ps: Start-Service WlanSvc –PassThru
+  - ps: Start-Sleep -s 10
+  - ps: Set-Service WlanSvc –startuptype automatic
+  - ps: Start-Service WlanSvc
 
 test_script:
   #- ps: .\patch_qt.ps1
